@@ -14,7 +14,7 @@ class SliderController extends Controller
 {
     public function index()
     {
-        return SliderResourse::collection(Slider::all());
+        return SliderResourse::collection(Slider::all())->all();
     }
 
     public function store(SliderCreateRequest $request)
@@ -23,7 +23,8 @@ class SliderController extends Controller
         $data = Slider::create([
             'title' => $request->title,
             'model' => $request->model,
-            'image' => asset($image)
+            'horizontal' => $request->horizontal,
+            'image' => $image
         ]);
 
         return response()->json(new SliderResourse($data), 201);
@@ -42,7 +43,8 @@ class SliderController extends Controller
         $slider->update([
             'title' => $request->title,
             'model' => $request->model,
-            'image' => asset($image)
+            'horizontal' => $request->horizontal,
+            'image' => $image
         ]);
         return response()->json(new SliderResourse($slider), 201);
     }

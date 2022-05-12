@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Slider;
+namespace App\Http\Requests\AboutUs;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class SliderUpdateRequest extends FormRequest
+class AboutUsUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,9 +26,8 @@ class SliderUpdateRequest extends FormRequest
         if ($this->isMethod('get')) return [];
         return [
             'title' => 'required|string',
-            'model' => 'required|string',
-            'horizontal' => 'nullable|boolean',
-            'image' => 'nullable|mimes:jpeg,png,jpg,gif,webp'
+            'description' => 'required|string',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg,webp'
         ];
     }
 }

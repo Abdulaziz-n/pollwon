@@ -13,9 +13,8 @@ class BannerController extends Controller
 {
     public function index()
     {
-        return BannerResource::collection(Banner::take(2)->get());
+        return BannerResource::collection(Banner::take(2)->get())->all();
     }
-
 
     public function update(Banner $banner, BannerRequest $request)
     {
@@ -29,7 +28,7 @@ class BannerController extends Controller
 
         $banner->update([
             'title' => $request->title,
-            'image' => asset($image)
+            'image' => $image
         ]);
         return response()->json(new BannerResource($banner), 201);
     }

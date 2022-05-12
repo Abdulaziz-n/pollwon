@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Banner;
+namespace App\Http\Resources\Products;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BannerResource extends JsonResource
+class ProductsResource extends JsonResource
 {
     public static $wrap = false;
     /**
@@ -16,9 +16,11 @@ class BannerResource extends JsonResource
     public function toArray($request)
     {
         return [
-          'id' => $this->id,
-          'title' => $this->title,
-          'image' => asset($this->image)
+            'id' => $this->id,
+            'title' => $this->title,
+            'position' => $this->position,
+            'category_id' => $this->category_id,
+            'image' => asset($this->image)
         ];
     }
 }

@@ -26,6 +26,7 @@ class SliderCreateRequest extends FormRequest
         return [
             'title' => 'required|string',
             'model' => 'required|string',
+            'horizontal' => 'nullable|boolean',
             'image' => 'required|mimes:jpeg,png,jpg,gif,webp'
         ];
     }

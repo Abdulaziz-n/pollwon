@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sliders', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->jsonb('title');
-            $table->boolean('horizontal')->default(0);
-            $table->string('model');
             $table->string('image');
             $table->timestamps();
         });
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sliders');
+        Schema::dropIfExists('categories');
     }
 };
