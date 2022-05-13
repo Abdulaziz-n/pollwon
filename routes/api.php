@@ -10,6 +10,11 @@ use App\Http\Controllers\Dashboard\AboutUsController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Site\SlidersController;
+use App\Http\Controllers\Site\ProductsController;
+use App\Http\Controllers\Site\CategoriesController;
+use App\Http\Controllers\Site\BannersController;
+use App\Http\Controllers\Site\AboutController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -141,11 +146,30 @@ Route::group([
 //              //
 //////////////////
 
+
 Route::group([
    'prefix' => 'site'
 ], function(){
 
     //Feedback
    Route::post('feedback/send', [FeedbackController::class, 'store']);
+
+   //Slider
+   Route::get('sliders', [SlidersController::class, 'index']);
+
+   //Products
+   Route::get('products', [ProductsController::class, 'index']);
+
+   //Category
+   Route::get('category', [CategoriesController::class, 'index']);
+
+   //Banners
+   Route::get('banners', [BannersController::class, 'index']);
+
+   //About Us
+   Route::get('about/us', [AboutController::class, 'index']);
+
+    //About Us Pictures
+   Route::get('about/pictures', [AboutController::class, 'pictures']);
 
 });
