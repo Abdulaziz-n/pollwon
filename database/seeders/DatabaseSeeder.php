@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
            //UserSeeder::class,
            // BannerSeeder::class,
            // AboutUsPictureSeeder::class
-            SettingsSeeder::class
+           // SettingsSeeder::class
         ]);
     }
 }
