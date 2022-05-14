@@ -15,6 +15,8 @@ use App\Http\Controllers\Site\ProductsController;
 use App\Http\Controllers\Site\CategoriesController;
 use App\Http\Controllers\Site\BannersController;
 use App\Http\Controllers\Site\AboutController;
+use App\Http\Controllers\Site\SiteController;
+use App\Http\Controllers\Dashboard\SettingController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -129,6 +131,17 @@ Route::group([
 
     });
 
+    //Settings
+    Route::group([
+        'prefix' => 'settings'
+    ], function(){
+
+        Route::get('', [SettingController::class, 'index' ]);
+        Route::get('show/{setting}', [SettingController::class, 'update' ]);
+        Route::post('update/{setting}', [SettingController::class, 'update' ]);
+
+    });
+
     //Feedback
     Route::group([
         'prefix' => 'feedback'
@@ -172,4 +185,6 @@ Route::group([
     //About Us Pictures
    Route::get('about/pictures', [AboutController::class, 'pictures']);
 
+   //Site
+    Route::get('index', [SiteController::class, 'index']);
 });
