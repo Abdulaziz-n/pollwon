@@ -52,7 +52,7 @@ Route::group([
 //////////////////
 
 Route::group([
-   'middleware' => 'api',
+   'middleware' => 'auth',
    'prefix' => 'dashboard'
 
 ], function(){

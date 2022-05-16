@@ -31,6 +31,7 @@ class SiteController extends Controller
         $about_pictures = AboutUsPicture::orderBy('created_at', 'DESC')->get();
         $about_us = AboutUs::orderBy('created_at', 'DESC')->get();
         $settings = Setting::all();
+
         return [
             'slider' => SliderResourse::collection($slider)->all(),
             'categories' => CategoryResource::collection($categories)->all(),
