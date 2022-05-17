@@ -24,17 +24,13 @@ class AboutUsPictureController extends Controller
         }
         if ($request->hasFile('image')) {
             File::delete($picture->image);
-            File::delete($picture->image_mobile);
             $image = $request->file('image')->store('images');
-            $image_mobile = $request->file('image_mobile')->store('images');
         } else {
             $image = $picture->image;
-            $image_mobile = $picture->image_mobile;
         }
         $picture->update([
             'position' => $request->position,
             'image' => $image,
-            'image_mobile' => $image_mobile
         ]);
         return response()->json(new AboutUsPictureResource($picture), 201);
     }

@@ -26,7 +26,8 @@ class BannerRequest extends FormRequest
         if ($this->isMethod('get')) return [];
         return [
             'title' => 'required|string',
-            'image' => 'nullable|mimes:jpg,png,jpeg,gif,svg,webp'
+            'image' => 'nullable|mimes:jpg,png,jpeg,gif,svg,webp',
+            'image_mobile' => 'nullable|mimes:jpg,png,jpeg,gif,svg,webp'
         ];
     }
 }

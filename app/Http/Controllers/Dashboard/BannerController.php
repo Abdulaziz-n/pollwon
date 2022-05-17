@@ -25,10 +25,15 @@ class BannerController extends Controller
             File::delete($banner->image);
             $image = $request->file('image')->store('images');
         } else $image = $banner->image;
+        if ($request->hasFile('image_mobile')) {
+            File::delete($banner->image_mobile);
+            $image_mobile = $request->file('image_mobile')->store('images');
+        } else $image_mobile = $banner->image_mobile;
 
         $banner->update([
             'title' => $request->title,
-            'image' => $image
+            'image' => $image,
+            'image_mobile' => $image_mobile
         ]);
         return response()->json(new BannerResource($banner), 201);
     }

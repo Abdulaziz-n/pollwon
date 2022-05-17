@@ -17,9 +17,8 @@ class AboutUsPictureResource extends JsonResource
         return [
             'id' => $this->id,
             'image' => asset($this->image),
-            'image_mobile' => asset($this->image_mobile),
             'position' => $this->position
-            
+
         ];
     }
 }

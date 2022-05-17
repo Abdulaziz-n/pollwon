@@ -28,7 +28,6 @@ class AboutUsUPictureUpdateRequest extends FormRequest
         return [
             'position' => 'required|integer',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,webp',
-            'image_mobile' => 'nullable|image|mimes:jpg,png,jpeg,gif,webp',
         ];
     }
 }
