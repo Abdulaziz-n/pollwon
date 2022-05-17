@@ -25,8 +25,8 @@ class AboutUsUpdateRequest extends FormRequest
     {
         if ($this->isMethod('get')) return [];
         return [
-            'title' => 'required|string',
-            'description' => 'required|string',
+            'title' => 'string',
+            'description' => 'string',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif,svg,webp'
         ];
     }

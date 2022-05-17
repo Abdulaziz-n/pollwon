@@ -19,5 +19,7 @@ class AboutUs extends Model
     {
         return (object)json_decode($this->attributes['description']);
     }
+
+
 }
 
