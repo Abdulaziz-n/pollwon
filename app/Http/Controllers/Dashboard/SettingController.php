@@ -25,6 +25,10 @@ class SettingController extends Controller
             File::delete($setting->file);
             $file = $request->file('file')->store('file');
         } else $file = $setting->file;
+        if ($request->hasFile('file_agreement')) {
+            File::delete($setting->file_agreement);
+            $file_agreement = $request->file('file_agreement')->store('file');
+        } else $file_agreement = $setting->file_agreement;
 
         $setting->update([
             'shop' => $request->shop,
@@ -32,8 +36,9 @@ class SettingController extends Controller
             'social' => $request->social,
             'main_title' => $request->main_title,
             'about_us' => $request->about_us,
-            'file' => $file
+            'file' => $file,
+            'file_agreement' => $file_agreement
         ]);
-        return response()->json(new SettingResource($setting), 201);
+        return new SettingResource($setting);
     }
 }

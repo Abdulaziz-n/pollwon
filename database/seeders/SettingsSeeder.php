@@ -21,7 +21,8 @@ class SettingsSeeder extends Seeder
             'office' => json_encode('office'),
             'main_title' => json_encode('main_title'),
             'about_us' => json_encode('about us'),
-            'file' => 'path/file.pdf'
+            'file' => 'path/file.pdf',
+            'file_agreement' => 'path/file.pdf'
         ]);
     }
 }

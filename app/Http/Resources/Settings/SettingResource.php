@@ -22,7 +22,7 @@ class SettingResource extends JsonResource
             'main_title' => $this->main_title,
             'about_us' => $this->about_us,
             'file' => asset($this->file),
-
+            'file_agreement' => asset($this->file_agreement),
         ];
     }
 }

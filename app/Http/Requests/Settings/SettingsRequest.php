@@ -30,6 +30,7 @@ class SettingsRequest extends FormRequest
             'main_title' => 'array',
             'about_us' => 'array',
             'file' => 'nullable|mimes:pdf,docx,xlsx,csv',
+            'file_agreement' => 'nullable|mimes:pdf,docx,xlsx,csv',
         ];
     }
 }
