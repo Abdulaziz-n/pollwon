@@ -19,7 +19,8 @@ class SettingResource extends JsonResource
             'shop' => $this->shop,
             'office' => $this->office,
             'social' => $this->social,
-            'link' => $this->link,
+            'main_title' => $this->main_title,
+            'about_us' => $this->about_us,
             'file' => asset($this->file),
 
         ];

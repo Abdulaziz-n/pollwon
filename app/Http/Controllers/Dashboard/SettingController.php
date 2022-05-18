@@ -30,7 +30,8 @@ class SettingController extends Controller
             'shop' => $request->shop,
             'office' => $request->office,
             'social' => $request->social,
-            'link' => $request->link,
+            'main_title' => $request->main_title,
+            'about_us' => $request->about_us,
             'file' => $file
         ]);
         return response()->json(new SettingResource($setting), 201);

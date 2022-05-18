@@ -26,7 +26,6 @@ class SiteController extends Controller
     {
         $slider = Slider::orderBy('created_at', 'DESC')->get();
         $categories = Category::orderBy('created_at', 'DESC')->get();
-        $products = Product::orderBy('created_at', 'DESC')->get();
         $banners = Banner::orderBy('created_at', 'DESC')->get();
         $about_pictures = AboutUsPicture::orderBy('created_at', 'DESC')->get();
         $about_us = AboutUs::orderBy('created_at', 'DESC')->get();
@@ -35,7 +34,6 @@ class SiteController extends Controller
         return [
             'slider' => SliderResourse::collection($slider)->all(),
             'categories' => CategoryResource::collection($categories)->all(),
-            'products' => ProductsResource::collection($products)->all(),
             'banner' => BannerResource::collection($banners)->all(),
             'about_us_pictures' => AboutUsPictureResource::collection($about_pictures)->all(),
             'about_us' => AboutUsResource::collection($about_us)->all(),

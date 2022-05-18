@@ -19,7 +19,8 @@ class SettingsSeeder extends Seeder
             'shop' => json_encode('test'),
             'social' => json_encode('social'),
             'office' => json_encode('office'),
-            'link' => 'https://maps.com',
+            'main_title' => json_encode('main_title'),
+            'about_us' => json_encode('about us'),
             'file' => 'path/file.pdf'
         ]);
     }

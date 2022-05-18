@@ -14,6 +14,8 @@ class Setting extends Model
     protected $casts = [
         'shop' => 'array',
         'office' => 'array',
-        'social' => 'array'
+        'social' => 'array',
+        'main_title' => 'array',
+        'about_us' => 'array',
     ];
 }

@@ -27,7 +27,8 @@ class SettingsRequest extends FormRequest
             'shop' => 'array',
             'office' => 'array',
             'social' => 'array',
-            'link' => 'nullable|string',
+            'main_title' => 'array',
+            'about_us' => 'array',
             'file' => 'nullable|mimes:pdf,docx,xlsx,csv',
         ];
     }
