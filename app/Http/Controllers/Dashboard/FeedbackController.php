@@ -12,7 +12,7 @@ class FeedbackController extends Controller
 {
     public function index()
     {
-        return response()->json(FeedbackResource::collection(Feedback::all()));
+        return FeedbackResource::collection(Feedback::all())->all();
     }
 
     public function store(FeedbackRequest $request)
@@ -23,6 +23,6 @@ class FeedbackController extends Controller
            'message' => $request->message
         ]);
 
-        return response()->json(new FeedbackResource($data));
+        return new FeedbackResource($data);
     }
 }
