@@ -14,7 +14,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        return ProductsResource::collection(Product::all())->all();
+        return ProductsResource::collection(Product::orderByDesc('created_at')->get())->all();
     }
 
     public function store(ProductCreateRequest $request)
