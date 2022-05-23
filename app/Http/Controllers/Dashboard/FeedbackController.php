@@ -12,7 +12,7 @@ class FeedbackController extends Controller
 {
     public function index()
     {
-        return FeedbackResource::collection(Feedback::all())->all();
+        return FeedbackResource::collection(Feedback::orderByDesc('created_at')->get())->all();
     }
 
     public function store(FeedbackRequest $request)
@@ -28,7 +28,7 @@ class FeedbackController extends Controller
         $arr = array(
             'Имя' => $data->name,
             'Телефон' => $data->phone,
-            'email' => $data->message
+            'Комментарий' => $data->message ?? 'не заполнено'
         );
         foreach ($arr as $key => $value){
           $text .= "<b>". $key ."</b>: " .$value. "%0A";
