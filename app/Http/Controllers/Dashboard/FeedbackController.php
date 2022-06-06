@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Feedback\FeedbackUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Feedback;
 use App\Http\Resources\FeedbackResource;
@@ -20,7 +21,8 @@ class FeedbackController extends Controller
         $data = Feedback::create([
            'name' => $request->name,
            'phone' => $request->phone,
-           'message' => $request->message
+           'message' => $request->message,
+            'status' => $request->status ?? 'new'
         ]);
         $token = "5362655748:AAEUPYhiTrHBjZf8ZfKOUYtipHg4CDLkJJg";
         $chat_id = "-760287807";
@@ -36,5 +38,19 @@ class FeedbackController extends Controller
         $sendToTelegram = fopen("https://api.telegram.org/bot{$token}/sendMessage?chat_id={$chat_id}&parse_mode=html&text={$text}", "r");
 
         return new FeedbackResource($data);
+    }
+
+    public function update(Feedback $feedback,FeedbackUpdateRequest $request)
+    {
+        if ($request->isMethod('get'))
+        {
+            return $feedback;
+        }
+
+        $feedback->update([
+           'status' => $request->status
+        ]);
+
+        return  new FeedbackResource($feedback);
     }
 }

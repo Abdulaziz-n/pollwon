@@ -13,6 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
+        if (Schema::hasColumn('settings', 'file_agreement'))
+        {
+            Schema::table('settings', function (Blueprint $table)
+            {
+                $table->dropColumn('file_agreement');
+            });
+        }
         Schema::table('settings', function (Blueprint $table) {
             $table->string('file_agreement');
         });

@@ -17,6 +17,7 @@ use App\Http\Controllers\Site\BannersController;
 use App\Http\Controllers\Site\AboutController;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Dashboard\SettingController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -149,6 +150,8 @@ Route::group([
     ], function(){
 
         Route::get('', [FeedbackController::class, 'index']);
+        Route::get('update/{feedback}', [FeedbackController::class, 'update']);
+        Route::post('update/{feedback}', [FeedbackController::class, 'update']);
     });
 
 });

@@ -4,7 +4,7 @@ namespace App\Http\Requests\Feedback;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FeedbackRequest extends FormRequest
+class FeedbackUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,12 +23,9 @@ class FeedbackRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->isMethod('get')) return [];
         return [
-            'name' => 'required|string',
-            'phone' => 'required|string',
-            'message' => 'nullable|string',
             'status' => 'nullable|string'
-
         ];
     }
 }
