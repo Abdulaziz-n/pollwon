@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+//use GuzzleHttp\Psr7\Request;
+use App\Http\Requests\Auth\AuthUpdatePasswdRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Http\Request;
 class AuthController extends Controller
 {
     /**
@@ -65,6 +67,18 @@ class AuthController extends Controller
         return $this->respondWithToken(auth()->refresh());
     }
 
+    public function updatePass(AuthUpdatePasswdRequest $request)
+    {
+        $user = Auth::user();
+
+        $user->update([
+           'password' => bcrypt($request->password)
+        ]);
+
+        return response()->json([
+            'result' => 'successfully updated'
+        ],201);
+    }
     /**
      * Get the token array structure.
      *
