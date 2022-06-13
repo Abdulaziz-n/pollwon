@@ -22,14 +22,30 @@ class FeedbackController extends Controller
            'name' => $request->name,
            'phone' => $request->phone,
            'message' => $request->message,
+            'type' => $request->type,
             'status' => $request->status ?? 'new'
         ]);
+
+        if ($data->type == 'catalog')
+        {
+            $data->type = 'Загрузка каталога';
+        }
+        if ($data->type == 'call')
+        {
+            $data->type = 'Заказать звонок';
+        }
+        if ($data->type == 'feedback')
+        {
+            $data->type = 'Заявка';
+        }
+
         $token = "5362655748:AAEUPYhiTrHBjZf8ZfKOUYtipHg4CDLkJJg";
         $chat_id = "-760287807";
         $text = '';
         $arr = array(
             'Имя' => $data->name,
             'Телефон' => $data->phone,
+            'Тип заявки' => $data->type,
             'Комментарий' => $data->message ?? 'не заполнено'
         );
         foreach ($arr as $key => $value){

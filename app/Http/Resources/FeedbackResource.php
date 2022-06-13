@@ -20,6 +20,7 @@ class FeedbackResource extends JsonResource
             'name' => $this->name,
             'phone' => $this->phone,
             'message' => $this->message,
+            'type' => $this->type,
             'status' => $this->status
         ];
     }

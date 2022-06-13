@@ -27,6 +27,7 @@ class FeedbackRequest extends FormRequest
             'name' => 'required|string',
             'phone' => 'required|string',
             'message' => 'nullable|string',
+            'type' => 'nullable|string',
             'status' => 'nullable|string'
 
         ];
