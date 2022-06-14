@@ -26,7 +26,7 @@ class ProductCreateRequest extends FormRequest
         return [
             'title' => 'array',
             'title.*' => 'string',
-            'position' => 'integer',
+            'models_count' => 'array',
             'category_id' => 'integer',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp'
         ];

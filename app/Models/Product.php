@@ -12,7 +12,8 @@ class Product extends Model
     protected $guarded = ['id'];
 
     protected $casts = [
-      'title' => 'array'
+      'title' => 'array',
+        'models_count' => 'array'
     ];
 
 }

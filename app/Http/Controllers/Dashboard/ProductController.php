@@ -22,7 +22,7 @@ class ProductController extends Controller
         $image = $request->file('image')->store('images');
         $data = Product::query()->create([
             'title' => $request->title,
-            'position'=> $request->position,
+            'models_count'=> $request->models_count,
             'category_id' => $request->category_id,
             'image' => $image
         ]);
@@ -42,7 +42,7 @@ class ProductController extends Controller
 
         $product->update([
             'title' => $request->title,
-            'position' => $request->position,
+            'models_count' => $request->models_count,
             'category_id' => $request->category_id,
             'image' => $image
         ]);
