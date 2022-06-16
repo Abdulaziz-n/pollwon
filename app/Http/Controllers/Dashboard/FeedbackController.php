@@ -40,7 +40,7 @@ class FeedbackController extends Controller
         }
 
         $token = "5362655748:AAEUPYhiTrHBjZf8ZfKOUYtipHg4CDLkJJg";
-        $chat_id = "-760287807";
+        $chat_id = "-1001780912884";
         $text = '';
         $arr = array(
             'Имя' => $data->name,
