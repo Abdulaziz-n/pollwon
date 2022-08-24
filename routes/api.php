@@ -17,7 +17,10 @@ use App\Http\Controllers\Site\BannersController;
 use App\Http\Controllers\Site\AboutController;
 use App\Http\Controllers\Site\SiteController;
 use App\Http\Controllers\Dashboard\SettingController;
-
+use App\Http\Controllers\Dashboard\GuaranteedServiceController;
+use App\Http\Controllers\Site\GuaranteedController;
+use App\Http\Controllers\Dashboard\ServiceCentreController;
+use App\Http\Controllers\Site\ServiceCentresController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -155,6 +158,31 @@ Route::group([
         Route::post('update/{feedback}', [FeedbackController::class, 'update']);
     });
 
+    //Guaranteed Service
+
+    Route::group([
+        'prefix' => 'guaranteed-service'
+    ], function(){
+
+        Route::get('', [GuaranteedServiceController::class, 'index' ]);
+        Route::get('show/{guaranteedService}', [GuaranteedServiceController::class, 'update' ]);
+        Route::post('update/{guaranteedService}', [GuaranteedServiceController::class, 'update' ]);
+
+    });
+
+    //Service Centres
+    Route::group([
+        'prefix' => 'service-centre'
+    ], function(){
+
+        Route::get('', [ServiceCentreController::class, 'index' ]);
+        Route::post('create', [ServiceCentreController::class, 'store' ]);
+        Route::get('show/{serviceCentre}', [ServiceCentreController::class, 'update' ]);
+        Route::post('update/{serviceCentre}', [ServiceCentreController::class, 'update' ]);
+        Route::delete('delete/{serviceCentre}', [ServiceCentreController::class, 'destroy' ]);
+
+    });
+
 });
 
 //////////////////
@@ -191,4 +219,11 @@ Route::group([
 
    //Site
     Route::get('index', [SiteController::class, 'index']);
+
+    // Guaranteed Service
+    Route::get('guaranteed-service', [GuaranteedController::class, 'index']);
+
+    //Service
+    Route::get('service-centre', [ServiceCentresController::class, 'index' ]);
+
 });
