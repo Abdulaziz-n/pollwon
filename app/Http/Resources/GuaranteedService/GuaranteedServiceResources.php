@@ -21,7 +21,7 @@ class GuaranteedServiceResources extends JsonResource
             'title' => $this->title,
             'subtitle' => $this->subtitle,
             'description' => $this->description,
-            'image' => $this->image
+            'image' => asset($this->image)
         ];
     }
 }

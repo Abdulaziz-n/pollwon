@@ -27,7 +27,9 @@ class BannerRequest extends FormRequest
         return [
             'title' => 'required|string',
             'image' => 'nullable|mimes:jpg,png,jpeg,gif,svg,webp,mp4,ogx,oga,ogv,ogg,webm',
-            'image_mobile' => 'nullable|mimes:jpg,png,jpeg,gif,svg,webp,mp4,ogx,oga,ogv,ogg,webm'
+            'image_mobile' => 'nullable|mimes:jpg,png,jpeg,gif,svg,webp,mp4,ogx,oga,ogv,ogg,webm',
+            'image1' => 'nullable|mimes:jpg,png,jpeg,gif,svg,webp,mp4,ogx,oga,ogv,ogg,webm',
+            'image_mobile1' => 'nullable|mimes:jpg,png,jpeg,gif,svg,webp,mp4,ogx,oga,ogv,ogg,webm',
         ];
     }
 }
