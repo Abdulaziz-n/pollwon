@@ -29,11 +29,21 @@ class BannerController extends Controller
             File::delete($banner->image_mobile);
             $image_mobile = $request->file('image_mobile')->store('images');
         } else $image_mobile = $banner->image_mobile;
+        if ($request->hasFile('image1')) {
+            File::delete($banner->image1);
+            $image = $request->file('image1')->store('images');
+        } else $image1 = $banner->image1;
+        if ($request->hasFile('image_mobile1')) {
+            File::delete($banner->image_mobile1);
+            $image_mobile1 = $request->file('image_mobile1')->store('images');
+        } else $image_mobile1 = $banner->image_mobile1;
 
         $banner->update([
             'title' => $request->title,
             'image' => $image,
-            'image_mobile' => $image_mobile
+            'image_mobile' => $image_mobile,
+            'image1' => $image1,
+            'image_mobile1' => $image_mobile1
         ]);
         return response()->json(new BannerResource($banner), 201);
     }
