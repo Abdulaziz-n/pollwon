@@ -31,7 +31,7 @@ class BannerController extends Controller
         } else $image_mobile = $banner->image_mobile;
         if ($request->hasFile('image1')) {
             File::delete($banner->image1);
-            $image = $request->file('image1')->store('images');
+            $image1 = $request->file('image1')->store('images');
         } else $image1 = $banner->image1;
         if ($request->hasFile('image_mobile1')) {
             File::delete($banner->image_mobile1);
@@ -45,7 +45,7 @@ class BannerController extends Controller
             'image1' => $image1,
             'image_mobile1' => $image_mobile1
         ]);
-        return response()->json(new BannerResource($banner), 201);
+        return new BannerResource($banner);
     }
 
 }
