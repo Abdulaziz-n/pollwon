@@ -34,7 +34,7 @@ class ServiceCentreController extends Controller
         }
 
         $serviceCentre->update([
-            'title' => $request->title,
+            'city' => $request->city,
             'address' => $request->address,
             'description' => $request->description,
         ]);
