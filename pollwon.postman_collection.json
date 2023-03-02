@@ -1,0 +1,2135 @@
+{
+	"info": {
+		"_postman_id": "f4d93b2f-855f-4ea8-aef2-66da3b474686",
+		"name": "pollwon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20475215"
+	},
+	"item": [
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"var token = jsonData.access_token;",
+											"pm.environment.set('token', token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@admin.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "112233",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}auth/login",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "me",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"var token = jsonData.access_token;",
+											"pm.environment.set('token', token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "admin@admin.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}auth/login",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE2NTI2ODA5NDQsImV4cCI6MTY1MjY4NDU0NCwibmJmIjoxNjUyNjgwOTQ0LCJqdGkiOiJtZ2IwYVhUbmFFWWVYTEF4Iiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.X_jdqsLAKLYD_R2UxrSsw_ySaZSvmxzecVSjEUXRjG0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}auth/logout",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change Password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "password",
+											"value": "11223",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}auth/update/password",
+									"host": [
+										"{{url}}auth"
+									],
+									"path": [
+										"update",
+										"password"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Slider",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/slider",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"slider"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "{\"ru\":\"title_ru\", \"uz\":\"title_uz\"}",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "PWD-12-923",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/Без названия (2).jpeg"
+										},
+										{
+											"key": "horizontal",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/slider/create",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"slider",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "{\"ru\":\"title_____RU\",\"uz\":\"title____UZ\"}",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "RSD-2ewqd",
+											"type": "text"
+										},
+										{
+											"key": "horizontal",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/slider/update/2",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"slider",
+										"update",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/slider/show/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"slider",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/slider/delete/2",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"slider",
+										"delete",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/products",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title[ru]",
+											"value": "title_ru",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "title[uz]",
+											"value": "title_uz",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/DMAX.png"
+										},
+										{
+											"key": "category_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "models_count[ru]",
+											"value": "10 ru",
+											"type": "text"
+										},
+										{
+											"key": "models_count[uz]",
+											"value": "10 uz",
+											"type": "text"
+										},
+										{
+											"key": "title[kyr]",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/products/create",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"products",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title[ru]",
+											"value": "titleeee_ru",
+											"type": "text"
+										},
+										{
+											"key": "title[uz]",
+											"value": "title_uzzzź",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "4",
+											"type": "text"
+										},
+										{
+											"key": "models_count[ru]",
+											"value": "42 ru",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/products/update/4",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"products",
+										"update",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/products/show/20",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"products",
+										"show",
+										"20"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/products/delete/2",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"products",
+										"delete",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/category",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"category"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title[ru]",
+											"value": "title_ru1",
+											"contentType": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "title[uz]",
+											"value": "title_uz",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/Без названия.jpeg"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/category/create",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"category",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title[ru]",
+											"value": "titleeee_ru",
+											"type": "text"
+										},
+										{
+											"key": "title[uz]",
+											"value": "title_uzzzź",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/Без названия (1).jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/category/update/2",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"category",
+										"update",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/category/show/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"category",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/category/delete/3",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"category",
+										"delete",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Feedback",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/feedback",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"feedback"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update status",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "status",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/feedback/update/2",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"feedback",
+										"update",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/feedback/update/2",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"feedback",
+										"update",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "MainBanner",
+					"item": [
+						{
+							"name": "getItems",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/banners/",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"banners",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/banners/show/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"banners",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "{\"uz\":\"title_uz\",\"ru\":\"title_ru\"}",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/Без названия.jpeg"
+										},
+										{
+											"key": "image_mobile",
+											"type": "file",
+											"src": "/Users/master/Downloads/3be41c74-bc17-4e17-9ae4-b892d9c27036.webp"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/banners/update/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"banners",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "About Us Pictures",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/about-us-pictures/",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us-pictures",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/about-us-pictures/show/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us-pictures",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "position",
+											"value": "2",
+											"description": "integer value",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/Без названия (1).jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/about-us-pictures/update/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us-pictures",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "About Us",
+					"item": [
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "{\"uz\":\"title_uz\",\"ru\":\"title_ru\",\"kyr\":\"title_ru\"}",
+											"description": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "{\"uz\":\"desc_uz\",\"ru\":\"desc_ru\",\"kyr\":\"title_ru\"}",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/irgawev/Pictures/photo_2022-03-01 07.34.06.jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/about-us/create",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "{\"uz\":\"title_uz3\",\"ru\":\"title_ru\"}",
+											"description": "application/json",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "{\"uz\":\"desc_uz\",\"ru\":\"desc_ru3\"}",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/Без названия (1).jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/about-us/update/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/about-us/",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/about-us/show/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title",
+											"value": "{\"uz\":\"title_uz\",\"ru\":\"title_ru\",\"kyr\":\"title_ru\"}",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "{\"uz\":\"desc_uz\",\"ru\":\"desc_ru\",\"kyr\":\"title_ru\"}",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/Без названия.jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/about-us/update/2",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us",
+										"update",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/about-us/delete/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Settings",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/settings/",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"settings",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/settings/show/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"settings",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "shop[uz]",
+											"value": "street afrosiab 7/1",
+											"description": "integer value",
+											"type": "text"
+										},
+										{
+											"key": "shop[ru]",
+											"value": "улица афросиаб",
+											"type": "text"
+										},
+										{
+											"key": "shop[link]",
+											"value": "https://maps.com",
+											"type": "text"
+										},
+										{
+											"key": "office[ru]",
+											"value": "улица мирабад",
+											"type": "text"
+										},
+										{
+											"key": "office[uz]",
+											"value": "mirabad street",
+											"type": "text"
+										},
+										{
+											"key": "office[link]",
+											"value": "https://maps.com",
+											"type": "text"
+										},
+										{
+											"key": "social[instagram]",
+											"value": "instagram.com",
+											"type": "text"
+										},
+										{
+											"key": "social[telegram]",
+											"value": "telegram.com",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/master/Downloads/JAVA_Practice_Module_02_part_1.pdf"
+										},
+										{
+											"key": "shop[kyr]",
+											"value": "test kyr",
+											"type": "text"
+										},
+										{
+											"key": "main_title[ru]",
+											"value": "main_title_ru",
+											"type": "text"
+										},
+										{
+											"key": "main_title[uz]",
+											"value": "main_title_uz",
+											"type": "text"
+										},
+										{
+											"key": "about_us[ru]",
+											"value": "about_us_ru",
+											"type": "text"
+										},
+										{
+											"key": "about_us[uz]",
+											"value": "about_us_uz",
+											"type": "text"
+										},
+										{
+											"key": "file_agreement",
+											"type": "file",
+											"src": "/Users/master/Downloads/JAVA_Practice_Module_02_part_1.pdf"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/settings/update/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"settings",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Guaranteed Service",
+					"item": [
+						{
+							"name": "get item",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/guaranteed-service/show/11",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"guaranteed-service",
+										"show",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "title[ru]",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "title[uz]",
+											"value": "uz",
+											"type": "text"
+										},
+										{
+											"key": "subtitle[ru]",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "subtitle[uz]",
+											"value": "uz",
+											"type": "text"
+										},
+										{
+											"key": "description[ru]",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "description[uz]",
+											"value": "uz",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/image_2022-08-22_22-10-04 (1).png"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/guaranteed-service/update/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"guaranteed-service",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "service centre",
+					"item": [
+						{
+							"name": "get items",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/service-centre/",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"service-centre",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "create",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "city[uz]",
+											"value": "Andijan",
+											"type": "text"
+										},
+										{
+											"key": "city[ru]",
+											"value": "Андижан",
+											"type": "text"
+										},
+										{
+											"key": "address[ru]",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "address[uz]",
+											"value": "uz",
+											"type": "text"
+										},
+										{
+											"key": "description[phone]",
+											"value": "9780980808",
+											"type": "text"
+										},
+										{
+											"key": "description[birbalo]",
+											"value": "qowimcha qowsa boladi",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/service-centre/create",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"service-centre",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "city[uz]",
+											"value": "Andijan",
+											"type": "text"
+										},
+										{
+											"key": "city[ru]",
+											"value": "Андижан",
+											"type": "text"
+										},
+										{
+											"key": "address[ru]",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "address[uz]",
+											"value": "uz",
+											"type": "text"
+										},
+										{
+											"key": "description[phone]",
+											"value": "9780980808",
+											"type": "text"
+										},
+										{
+											"key": "description[birbalo]",
+											"value": "qowimcha qowsa boladi",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/service-centre/show/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"service-centre",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "city[uz]",
+											"value": "Andijan",
+											"type": "text"
+										},
+										{
+											"key": "city[ru]",
+											"value": "Андижан",
+											"type": "text"
+										},
+										{
+											"key": "address[ru]",
+											"value": "ru",
+											"type": "text"
+										},
+										{
+											"key": "address[uz]",
+											"value": "uz",
+											"type": "text"
+										},
+										{
+											"key": "description[phone]",
+											"value": "97809808082",
+											"type": "text"
+										},
+										{
+											"key": "description[birbalo]",
+											"value": "qowimcha qowsa boladi",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/service-centre/update/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"service-centre",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/service-centre/delete/2",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"service-centre",
+										"delete",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Site",
+			"item": [
+				{
+					"name": "Feedback",
+					"item": [
+						{
+							"name": "send",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Jamshid ",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "+998919999999",
+											"type": "text"
+										},
+										{
+											"key": "message",
+											"value": "test",
+											"description": "nullable",
+											"type": "text"
+										},
+										{
+											"key": "type",
+											"value": "catalog",
+											"description": "call,feedback,catalog",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}site/feedback/send",
+									"host": [
+										"{{url}}site"
+									],
+									"path": [
+										"feedback",
+										"send"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Slider",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}site/sliders/",
+									"host": [
+										"{{url}}site"
+									],
+									"path": [
+										"sliders",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}site/products/",
+									"host": [
+										"{{url}}site"
+									],
+									"path": [
+										"products",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}site/category/",
+									"host": [
+										"{{url}}site"
+									],
+									"path": [
+										"category",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Banners",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}site/banners/",
+									"host": [
+										"{{url}}site"
+									],
+									"path": [
+										"banners",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "About Us",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}site/about/us/",
+									"host": [
+										"{{url}}site"
+									],
+									"path": [
+										"about",
+										"us",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "pictures",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}site/about/pictures/",
+									"host": [
+										"{{url}}site"
+									],
+									"path": [
+										"about",
+										"pictures",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "About Us Pictures",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/about-us-pictures/",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us-pictures",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}dashboard/about-us-pictures/show/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us-pictures",
+										"show",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "position",
+											"value": "2",
+											"description": "integer value",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "/Users/master/Downloads/Без названия (1).jpeg"
+										},
+										{
+											"key": "image_mobile",
+											"type": "file",
+											"src": "/Users/master/Downloads/Без названия (2).jpeg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}dashboard/about-us-pictures/update/1",
+									"host": [
+										"{{url}}dashboard"
+									],
+									"path": [
+										"about-us-pictures",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Guaranteed Service",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}site/guaranteed-service",
+									"host": [
+										"{{url}}site"
+									],
+									"path": [
+										"guaranteed-service"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Service Centre",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}site/service-centre/",
+									"host": [
+										"{{url}}site"
+									],
+									"path": [
+										"service-centre",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "All data in get request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}site/index",
+							"host": [
+								"{{url}}site"
+							],
+							"path": [
+								"index"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "exceltest",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "role",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"sales_manager\",\n    \"permissions\": {\n        \"general\": {\n            \"currency\": false,\n            \"theme\": false,\n            \"language\": false,\n            \"settings\": false,\n            \"profile_settings\": false,\n            \"password_settings\": false\n        },\n        \"objects\": {\n            \"view\": false,\n            \"create\": false,\n            \"edit\": false,\n            \"show\": false,\n            \"delete\": false,\n            \"upload_logo\": false\n        },\n        \"promos\": {\n            \"view\": false,\n            \"create\": false,\n            \"edit\": false,\n            \"delete\": false\n        },\n        \"plans\": {\n            \"view\": false,\n            \"create\": false,\n            \"edit\": false,\n            \"delete\": false\n        },\n        \"apartments\": {\n            \"view\": false,\n            \"filter\": false,\n            \"lists\": {\n                \"list\": false,\n                \"grid\": false,\n                \"grid_sm\": false,\n                \"plan\": false\n            },\n            \"edit\": false,\n            \"is_available\": false,\n            \"show\": false\n        },\n        \"checkout\": {\n            \"book\": false,\n            \"checkout\": false,\n            \"mark_friends\": false,\n            \"mark_price\": false,\n            \"edit_date\": false,\n            \"monthly_payment\": false\n        },\n        \"contracts\": {\n            \"view\": false,\n            \"filter\": false,\n            \"show\": false,\n            \"download\": false,\n            \"cancel\": false,\n            \"client_type\": false,\n            \"root_branch\": false,\n            \"root\": false,\n            \"payments\": {\n                \"create\": false,\n                \"initial_type\": {\n                    \"create\": false,\n                    \"edit\": false,\n                    \"delete\": false\n                },\n                \"monthly_type\": {\n                    \"create\": false,\n                    \"edit\": false,\n                    \"delete\": false\n                },\n                \"import\": false,\n                \"list\": false,\n                \"edit\": false,\n                \"delete\": false\n            }\n        },\n        \"users\": {\n            \"view\": false,\n            \"create\": false,\n            \"edit\": false,\n            \"delete\": false\n        },\n        \"roles\": {\n            \"view\": false,\n            \"create\": false,\n            \"edit\": false,\n            \"delete\": false\n        },\n        \"debtors\": {\n            \"view\": false\n        },\n        \"companies\": {\n            \"view\": false,\n            \"show\": false,\n            \"create\": false,\n            \"edit\": false,\n            \"delete\": false\n        },\n        \"payment_account\": {\n            \"view\": false,\n            \"create\": false,\n            \"edit\": false,\n            \"delete\": false\n        },\n        \"branches\": {\n            \"view\": false,\n            \"contract_templates\": false,\n            \"create\": false,\n            \"edit\": false,\n            \"delete\": false\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}role/create/",
+					"host": [
+						"{{url}}role"
+					],
+					"path": [
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
