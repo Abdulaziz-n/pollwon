@@ -43,8 +43,8 @@ class FeedbackController extends Controller
             $data->type = 'Сервис центры';
         }
 
-        $token = "5362655748:AAEUPYhiTrHBjZf8ZfKOUYtipHg4CDLkJJg";
-        $chat_id = "-1001780912884";
+        $token = "5362655748:AAEUPYhiTrHBjZf8ZfKOUYtipHttgjibgdwaERFSg";
+        $chat_id = "-79879789797979";
         $text = '';
         $arr = array(
             'Имя' => $data->name,
