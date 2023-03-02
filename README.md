@@ -3,3 +3,7 @@
 
 php artisan key:generate
 php artisan jwt:secret
+
+
+В директории проекта имеется json файл postman с помощью него можете проверить проект
+
